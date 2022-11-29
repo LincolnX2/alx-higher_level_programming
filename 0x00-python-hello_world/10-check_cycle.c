@@ -1,27 +1,49 @@
-#!/usr/bin/python3
 #include "lists.h"
 
+
+
 /**
- * check_cycle - checks for cycle in a linked list
- * @list: linked list to check
- * Return: 1 if cycle, 0 if not
+
+ * check_cycle - function to check if singly linked list has a cycle
+
+ * @list: head pointer to singly linked list
+
+ * Return: 0 if no cycle, 1 if cycle
+
  */
 
 int check_cycle(listint_t *list)
+
 {
 
-listint_t *temp1 = NULL, *temp2 = NULL;
+	listint_t *rabbit;
 
-	temp1 = list;
-	temp2 = list;
 
-	while (list)
+
+	if (list == NULL)
+
+		return (0);
+
+	if (list->next == NULL)
+
+		return (0);
+
+	rabbit = list;
+
+	while (rabbit->next != NULL && rabbit->next->next != NULL)
+
 	{
-		temp2 = temp2->next;
-		if (!temp1 || !temp2)
-			return (0);
-		if (temp2 == temp1)
+
+		list = list->next;
+
+		rabbit = rabbit->next->next;
+
+		if (list == rabbit)
+
 			return (1);
+
 	}
+
 	return (0);
+
 }
