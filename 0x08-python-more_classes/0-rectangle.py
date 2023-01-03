@@ -2,8 +2,6 @@
 """
 A rectangle.
 """
-
-
 class Rectangle:
     """
     Rectangle functions and data
